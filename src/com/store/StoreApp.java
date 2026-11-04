@@ -1,5 +1,6 @@
 package com.store;
 
+import com.store.exception.ProductNotFoundException;
 import com.store.model.ElectronicProduct;
 import com.store.model.FoodProduct;
 import com.store.model.Product;
@@ -36,13 +37,26 @@ public class StoreApp {
     System.out.println("=== TIENDA EL ÉXITO ===");
     System.out.println();
 
-    Product foundProduct = inventory.findProduct("A001");
+    try {
+      Product foundProduct = inventory.findProduct("A001");
 
-    if (foundProduct != null) {
       System.out.println("Producto encontrado:");
       System.out.println(foundProduct);
-    } else {
-      System.out.println("El producto no fue encontrado.");
+
+    } catch (ProductNotFoundException exception) {
+      System.out.println(exception.getMessage());
+    }
+
+    System.out.println();
+
+    try {
+      Product foundProduct = inventory.findProduct("A999");
+
+      System.out.println("Producto encontrado:");
+      System.out.println(foundProduct);
+
+    } catch (ProductNotFoundException exception) {
+      System.out.println(exception.getMessage());
     }
 
     System.out.println();
