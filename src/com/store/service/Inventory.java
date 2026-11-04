@@ -1,5 +1,6 @@
 package com.store.service;
 
+import com.store.exception.ProductNotFoundException;
 import com.store.model.Product;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,8 +17,14 @@ public class Inventory {
     products.put(product.getCode(), product);
   }
 
-  public Product findProduct(String code) {
-    return products.get(code);
+  public Product findProduct(String code) throws ProductNotFoundException {
+    Product product = products.get(code);
+
+    if (product == null) {
+      throw new ProductNotFoundException(code);
+    }
+
+    return product;
   }
 
   public void displayInventory() {
