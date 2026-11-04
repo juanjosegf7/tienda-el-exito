@@ -22,10 +22,6 @@ Aplicar los fundamentos de programación orientada a objetos, colecciones y mane
 - Mostrar el inventario.
 - Manejar errores mediante excepciones personalizadas.
 
-## Estado
-
-Fase 1: configuración del entorno y creación del proyecto.
-
 ## Ejecución
 
 Compilar desde la raíz:
