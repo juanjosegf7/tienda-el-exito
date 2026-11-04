@@ -10,7 +10,14 @@ public class StoreApp {
 
   public static void main(String[] args) {
 
+    System.out.println("=== SISTEMA DE INVENTARIO - TIENDA EL ÉXITO ===");
+    System.out.println();
+
     Inventory inventory = new Inventory();
+
+    System.out.println("=== PRUEBA 1: INVENTARIO VACÍO ===");
+    inventory.displayInventory();
+    System.out.println();
 
     Product milk = new FoodProduct(
         "A001",
@@ -30,37 +37,43 @@ public class StoreApp {
         1250000.0,
         110);
 
+    System.out.println("=== PRUEBA 2: REGISTRO DE PRODUCTOS ===");
+
     inventory.addProduct(milk);
     inventory.addProduct(rice);
     inventory.addProduct(television);
 
-    System.out.println("=== TIENDA EL ÉXITO ===");
+    System.out.println("Se registraron tres productos correctamente.");
     System.out.println();
+
+    System.out.println("=== PRUEBA 3: BÚSQUEDA EXITOSA ===");
 
     try {
       Product foundProduct = inventory.findProduct("A001");
-
       System.out.println("Producto encontrado:");
       System.out.println(foundProduct);
-
     } catch (ProductNotFoundException exception) {
       System.out.println(exception.getMessage());
     }
 
     System.out.println();
+
+    System.out.println("=== PRUEBA 4: BÚSQUEDA FALLIDA ===");
 
     try {
       Product foundProduct = inventory.findProduct("A999");
-
       System.out.println("Producto encontrado:");
       System.out.println(foundProduct);
-
     } catch (ProductNotFoundException exception) {
       System.out.println(exception.getMessage());
     }
 
     System.out.println();
 
+    System.out.println("=== PRUEBA 5: INVENTARIO COMPLETO ===");
     inventory.displayInventory();
+    System.out.println();
+
+    System.out.println("=== FIN DE LAS PRUEBAS ===");
   }
 }
