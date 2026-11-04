@@ -3,10 +3,13 @@ package com.store;
 import com.store.model.ElectronicProduct;
 import com.store.model.FoodProduct;
 import com.store.model.Product;
+import com.store.service.Inventory;
 
 public class StoreApp {
 
   public static void main(String[] args) {
+
+    Inventory inventory = new Inventory();
 
     Product milk = new FoodProduct(
         "A001",
@@ -26,12 +29,24 @@ public class StoreApp {
         1250000.0,
         110);
 
+    inventory.addProduct(milk);
+    inventory.addProduct(rice);
+    inventory.addProduct(television);
+
     System.out.println("=== TIENDA EL ÉXITO ===");
-    System.out.println("Productos registrados para la prueba:");
     System.out.println();
 
-    System.out.println(milk);
-    System.out.println(rice);
-    System.out.println(television);
+    Product foundProduct = inventory.findProduct("A001");
+
+    if (foundProduct != null) {
+      System.out.println("Producto encontrado:");
+      System.out.println(foundProduct);
+    } else {
+      System.out.println("El producto no fue encontrado.");
+    }
+
+    System.out.println();
+
+    inventory.displayInventory();
   }
 }
